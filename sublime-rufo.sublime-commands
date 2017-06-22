@@ -1,6 +1,6 @@
 [
   {
-    "caption": "Ruby: format",
+    "caption": "Rufo: ruby format",
     "command": "rufo_format"
   }
 ]

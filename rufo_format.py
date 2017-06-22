@@ -6,7 +6,7 @@ import json
 
 class RufoPluginListener(sublime_plugin.EventListener):
   def on_pre_save(self, view):
-    settings = sublime.load_settings('Rufo.sublime-settings')
+    settings = sublime.load_settings('sublime-rufo.sublime-settings')
     if settings.get('auto_format') == None or settings.get('auto_format') == True:
       view.run_command('rufo_format')
 
@@ -26,7 +26,7 @@ class RufoFormatCommand(sublime_plugin.TextCommand):
     src = self.view.substr(region)
     window = self.view.window()
 
-    settings = sublime.load_settings('Rufo.sublime-settings')
+    settings = sublime.load_settings('sublime-rufo.sublime-settings')
     rufo_cmd = settings.get("rufo_cmd") or "rufo"
     with subprocess.Popen([rufo_cmd], stdin = subprocess.PIPE, stdout = subprocess.PIPE) as proc:
       proc.stdin.write(bytes(src, 'UTF-8'))
