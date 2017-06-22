@@ -12,3 +12,5 @@ __Note__: You need to have [Package Control](https://sublime.wbond.net/installat
 * Paste `https://github.com/asterite/sublime-rufo` and hit enter
 * Open Command Palette once again and select `Install Package`
 * Select `sublime-rufo`
+
+**You also need to install [rufo](https://github.com/asterite/rufo)**
