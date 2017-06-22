@@ -1,0 +1,6 @@
+[
+  {
+    "caption": "Ruby: format",
+    "command": "rufo_format"
+  }
+]
