@@ -25,10 +25,16 @@ class RufoFormatCommand(sublime_plugin.TextCommand):
     region = sublime.Region(0, vsize)
     src = self.view.substr(region)
     window = self.view.window()
+    filename = self.view.file_name()
 
     settings = sublime.load_settings('sublime-rufo.sublime-settings')
     rufo_cmd = settings.get("rufo_cmd") or "rufo"
-    with subprocess.Popen([rufo_cmd], stdin = subprocess.PIPE, stdout = subprocess.PIPE) as proc:
+
+    command = [rufo_cmd]
+    if filename != None:
+      command = [rufo_cmd, "--filename", filename]
+
+    with subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE) as proc:
       proc.stdin.write(bytes(src, 'UTF-8'))
       proc.stdin.close()
       output = proc.stdout.read().decode('UTF-8')
