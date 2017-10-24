@@ -41,7 +41,7 @@ class RufoFormatCommand(sublime_plugin.TextCommand):
       exit = proc.wait()
 
     pos = 0
-    if exit == 0:
+    if exit == 3:
       if not self.has_redo():
         for op, text in diff_match_patch().diff_main(src, output):
           if op == diff_match_patch.DIFF_DELETE:
