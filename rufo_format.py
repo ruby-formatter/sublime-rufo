@@ -14,7 +14,7 @@ class RufoFormatCommand(sublime_plugin.TextCommand):
   def is_enabled(self):
     caret = self.view.sel()[0].a
     syntax_name = self.view.scope_name(caret)
-    return "source.ruby" in syntax_name
+    return any(name in syntax_name for name in ["source.ruby", "text.html.ruby"])
 
   def has_redo(self):
     cmd, args, repeat = self.view.command_history(1)
